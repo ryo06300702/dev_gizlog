@@ -72,13 +72,13 @@
             <a href="{{ route('admin.attendance.index') }}"><i class="fa fa-briefcase">勤怠</i></a>
           </li>
           <li>
-            <a href="{{ route('')}}"><i class="fa fa-pencil-square-o">日報</i></a>
+            <a href=""><i class="fa fa-pencil-square-o">日報</i></a>
           </li>
           <li>
             <a href="admin/question/"><i class="fa fa-comments-o">質問掲示板</i></a>
           </li>
           <li>
-            <a href="admin/user/"><i class="fa fa-user">ユーザー</i></a>
+            <a href="admin/report/"><i class="fa fa-user">ユーザー</i></a>
           </li>
           <li>
             <a href="admin/adminuser/"><i class="fa fa-cog">管理ユーザー</i></a>
