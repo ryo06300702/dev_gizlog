@@ -36,7 +36,8 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        $validateuser = $request->user();
+        dd($validateuser);
     }
 
     /**

@@ -3,21 +3,21 @@
 
 <h2 class="brand-header">日報作成</h2>
 <div class="main-wrap">
-  <div class="container">
-      <input class="form-control" name="user_id" type="hidden">
-      <div class="form-group form-size-small">
-    <input class="form-control" name="reporting_time" type="date">
-    <span class="help-block"></span>
-    </div>
-    <div class="form-group">
-      <input class="form-control" placeholder="Title" name="title" type="text">
+  <div class="container {{ $errors->has('date')? 'has-error' : '' }}">
+    {!! Form::open(['route' => 'report.store'])!!}
+      {!! Form::input('date','reporting_time',null,['class' => 'form-control']) !!}
       <span class="help-block"></span>
-    </div>
-    <div class="form-group">
-      <textarea class="form-control" placeholder="Content" name="contents" cols="50" rows="10"></textarea>
-      <span class="help-block"></span>
-    </div>
-    <button type="submit" class="btn btn-success pull-right">Add</button>
+      </div>
+      <div class="form-group{{ $errors->has('text')? 'has-error' : '' }}">
+        {!! Form::input('text','title',null,['placeholder' => 'Title','class' => 'form-control']) !!}
+        <span class="help-block"></span>
+      </div>
+      <div class="form-group {{ $errors->has('textarea')? 'has-error' : '' }}">
+      {!! Form::input('textarea','contents',null,['placeholder' => 'Contents', 'class' => 'form-control','size' => '50x10']) !!}
+        <span class="help-block"></span>
+      </div>
+      {!! Form::submit('Add',['class' => 'btn btn-success pull-right']) !!}
+    {!! Form::close() !!}
   </div>
 </div>
 
