@@ -36,8 +36,8 @@ class ReportController extends Controller
      */
     public function store(Request $request)
     {
-        $validateuser = $request->user();
-        dd($validateuser);
+        $input = $request->all();
+        return redirect()->route('report.index');
     }
 
     /**
@@ -59,7 +59,7 @@ class ReportController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('user.daily_report.edit');
     }
 
     /**
@@ -71,7 +71,7 @@ class ReportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        
     }
 
     /**

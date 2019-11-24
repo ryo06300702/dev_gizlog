@@ -7,13 +7,12 @@
     {!! Form::open(['route' => 'report.store'])!!}
       {!! Form::input('date','reporting_time',null,['class' => 'form-control']) !!}
       <span class="help-block"></span>
-      </div>
       <div class="form-group{{ $errors->has('text')? 'has-error' : '' }}">
-        {!! Form::input('text','title',null,['placeholder' => 'Title','class' => 'form-control']) !!}
+        {!! Form::text('title',null,['placeholder' => 'Title','class' => 'form-control']) !!}
         <span class="help-block"></span>
       </div>
       <div class="form-group {{ $errors->has('textarea')? 'has-error' : '' }}">
-      {!! Form::input('textarea','contents',null,['placeholder' => 'Contents', 'class' => 'form-control','size' => '50x10']) !!}
+      {!! Form::textarea('contents',null,['placeholder' => 'Contents', 'class' => 'form-control','size' => '300x10']) !!}
         <span class="help-block"></span>
       </div>
       {!! Form::submit('Add',['class' => 'btn btn-success pull-right']) !!}
