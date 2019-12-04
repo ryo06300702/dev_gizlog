@@ -15,7 +15,7 @@
       <span class="help-block"></span>
       </div>
       <div class="form-group">
-        <textarea class="form-control" placeholder="本文" name="contents" cols="50" rows="10">本文</textarea>
+        <textarea class="form-control" placeholder="本文" name="contents" cols="50" rows="10"></textarea>
       <span class="help-block"></span>
       </div>
       <button type="submit" class="btn btn-success pull-right">Update</button>
