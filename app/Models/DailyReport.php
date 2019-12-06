@@ -6,6 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class DailyReport extends Model
 {
+
+    protected $dates = ['reporting_time'];
+    
     protected $fillable = [
         'title',
         'content',

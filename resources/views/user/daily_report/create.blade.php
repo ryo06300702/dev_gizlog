@@ -4,8 +4,10 @@
 <h2 class="brand-header">日報作成</h2>
 <div class="main-wrap">
   <div class="container">
-    {!! Form::open(['route' => 'report.store'])!!}
+    {!! Form::open(['route' => 'report.store']) !!}
+      <div class="form-group form-size-small">
       {!! Form::input('date','reporting_time',null,['class' => 'form-control']) !!}
+      </div>
       <span class="help-block"> {{ $errors->has('date')? 'has-error' : '' }}</span>
       <div class="form-group">
         {!! Form::text('title',null,['placeholder' => 'Title','class' => 'form-control']) !!}

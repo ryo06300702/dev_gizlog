@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Dailyreport;
 use Auth;
+use Carbon\Carbon;
 
 class ReportController extends Controller
 {
@@ -24,7 +25,6 @@ class ReportController extends Controller
     public function index()
     {
         $dailys = $this->daily->all();
-        //dd($dailys);
         $user = Auth::user();
         return view('user.daily_report.index',compact('dailys','user'));
     }
@@ -49,7 +49,6 @@ class ReportController extends Controller
     {
         $input = $request->all();
         $input['user_id'] = Auth::id(); 
-        // dd($input);
         $this->daily->fill($input)->save();
         return redirect()->route('report.index');
     }
@@ -62,7 +61,8 @@ class ReportController extends Controller
      */
     public function show($id)
     {
-        //
+        $daily = $this->daily->find($id);
+        return view('user.daily_report.show', compact('daily'));
     }
 
     /**

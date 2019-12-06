@@ -23,14 +23,10 @@
       <tbody>
         @foreach ($dailys as $daily)
           <tr class="row">
-            <td class="col-xs-2">{{ $daily->reporting_time }}</td>
+            <td class="col-xs-2">{{ $daily->reporting_time->format('m/d(D)')}}</td>
             <td class="col-xs-3">{{ $daily->title }}</td>
             <td class="col-xs-5">{{ $daily->content }}</td>
-            <td class="col-xs-2"><a class="btn" href="{{ route('report.edit', $daily->id) }}"><i class="fa fa-book"></i></a>
-            {!! Form::open(['route' => ['report.edit', $daily->id],'method' => 'GET']) !!}
-              {!! Form::submit(null,['class' => 'btn fa fa-book']) !!}
-            {!! Form::close() !!}  
-            </td>
+            <td class="col-xs-2"><a class="btn" href="{{ route('report.show', $daily->id) }}"><i class="fa fa-book"></i></a></td>
           </tr>
         @endforeach
       </tbody>
