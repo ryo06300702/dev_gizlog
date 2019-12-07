@@ -86,7 +86,9 @@ class ReportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $input = $request->all();
+        $this->daily->find($id)->fill($input)->save();
+        return redirect()->route('report.index');
     }
 
     /**
