@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\User;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Models\Dailyreport;
+use App\Models\DailyReport;
 use Auth;
 use Carbon\Carbon;
+use App\Http\Requests\User\DailyReportRequest;
 
 class ReportController extends Controller
 {
@@ -22,11 +24,21 @@ class ReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $users = DB::table('users')->paginate(10);
         $dailys = $this->daily->all();
+
         $user = Auth::user();
-        return view('user.daily_report.index',compact('dailys','user'));
+        
+        if (empty($request['search-month'])) {
+            $dailys = $this->daily->get();
+        } else {
+            $dailys = $this->daily->getDate($request['search-month']);
+        }
+
+        return view('user.daily_report.index',compact('dailys','user','users'));
+
     }
 
     /**
@@ -45,7 +57,7 @@ class ReportController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(DailyReportRequest $request)
     {
         $input = $request->all();
         $input['user_id'] = Auth::id(); 
@@ -84,8 +96,9 @@ class ReportController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(DailyReportRequest $request, $id)
     {
+
         $input = $request->all();
         $this->daily->find($id)->fill($input)->save();
         return redirect()->route('report.index');
@@ -99,6 +112,7 @@ class ReportController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->daily->find($id)->delete();
+        return redirect()->route('report.index');
     }
 }

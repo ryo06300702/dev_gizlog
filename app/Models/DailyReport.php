@@ -8,7 +8,7 @@ class DailyReport extends Model
 {
 
     protected $dates = ['reporting_time'];
-    
+   
     protected $fillable = [
         'title',
         'content',
@@ -19,5 +19,11 @@ class DailyReport extends Model
     public function getByUserId($id)
     {
         return $this->where('user_id')->get();
+    }
+
+    public static function getDate($searchMonth)
+    {
+        $dailys = self::where('reporting_time', 'like', $searchMonth.'%')->get();
+        return $dailys;
     }
 }
