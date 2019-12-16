@@ -26,18 +26,14 @@ class ReportController extends Controller
      */
     public function index(Request $request)
     {
-        $users = DB::table('users')->paginate(10);
-        $dailys = $this->daily->all();
-
-        $user = Auth::user();
         
         if (empty($request['search-month'])) {
-            $dailys = $this->daily->get();
+            $dailys = $this->daily->paginate(10);
         } else {
             $dailys = $this->daily->getDate($request['search-month']);
         }
-
-        return view('user.daily_report.index',compact('dailys','user','users'));
+        
+        return view('user.daily_report.index',compact('dailys'));
 
     }
 

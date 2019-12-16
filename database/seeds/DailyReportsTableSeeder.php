@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\DailyReport;
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
@@ -21,5 +22,6 @@ class DailyReportsTableSeeder extends Seeder
             'created_at' => Carbon::create(2019,1,1),
             'updated_at' => Carbon::create(2019,1,1),
         ]);
+            factory(App\Models\DailyReport::class, 100)->create();
     }
 }

@@ -11,7 +11,7 @@
     </form>
     <a class="btn btn-icon" href="{{ route('report.create')}}"><i class="fa fa-plus"></i></a>
   </div>
-  <div class="content-wrapper table-responsive">
+  <div class="content-wrapper table-responsive text-center">
     <table class="table table-striped">
       <thead>
         <tr class="row">
@@ -24,7 +24,7 @@
       <tbody>
         @foreach ($dailys as $daily)
           <tr class="row">
-            <td class="col-xs-2">{{ $daily->reporting_time->format('m/d(D)')}}</td>
+            <td class="col-xs-2">{{ $daily->reporting_time->format('m/d(D)') }}</td>
             <td class="col-xs-3">{{ $daily->title }}</td>
             <td class="col-xs-5">{{ $daily->content }}</td>
             <td class="col-xs-2"><a class="btn" href="{{ route('report.show', $daily->id) }}"><i class="fa fa-book"></i></a></td>
@@ -32,7 +32,7 @@
         @endforeach
       </tbody>
     </table>
-    {{ $users}}
+    {{ $dailys->links() }}
   </div>
 </div 
 
